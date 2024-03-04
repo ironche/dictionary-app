@@ -1,0 +1,13 @@
+# Dependencies
+node_modules/
+npm-debug.log
+
+# IDEs and editors
+.idea/
+.vscode/**
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# Filesystem
+.DS_Store
+Thumbs.db

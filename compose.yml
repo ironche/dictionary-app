@@ -1,0 +1,32 @@
+name: dictionary-app
+
+services:
+  db:
+    container_name: postgres
+    image: postgres:16.2
+    restart: always
+    ports:
+      - 5432:5432
+    networks:
+      - backend
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PW}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - ./dataset:/docker-entrypoint-initdb.d
+
+  dbadmin:
+    container_name: adminer
+    image: adminer:latest
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - backend
+    depends_on:
+      - db
+
+networks:
+  backend:
+  frontend:

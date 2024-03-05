@@ -7,7 +7,7 @@ express()
   .use(express.urlencoded({ extended: false }))
   .use(express.json())
   .use(logRequest)
-  .use('/', routes())
+  .use('/api', routes())
   .listen(AppConfig.PORT, () => {
     console.log(`Server is running on port ${AppConfig.PORT}`)
   })

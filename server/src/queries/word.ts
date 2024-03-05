@@ -1,6 +1,7 @@
 import sql from '../utils/db'
 
 export interface WordInfo {
+  id: number
   melingoid: number
   entry: string
   translationfull: string
@@ -11,6 +12,7 @@ export interface WordInfo {
 export function selectWordInfo(word: string, limit?: number, exactMatch = false): Promise<WordInfo[]> {
   return sql`
     SELECT
+      examples.id,
       entries.melingoid,
       entries.entry,
       entries.translationfull,

@@ -39,14 +39,16 @@ export function useWordInfo(word: string, limit: number, exactMatch = false): Wo
           data.result.forEach((r) => {
             const entry = uniqueEntries.get(r.melingoid)
             if (entry) {
-              entry.examples.push(r.text)
+              if (r.text) {
+                entry.examples.push(r.text)
+              }
             } else {
               uniqueEntries.set(r.melingoid, {
                 id: r.melingoid,
                 entry: r.entry,
                 full: r.translationfull,
                 flash: r.translationflash,
-                examples: [r.text],
+                examples: r.text ? [r.text] : [],
               })
             }
           })

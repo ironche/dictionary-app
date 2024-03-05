@@ -1,7 +1,7 @@
 import React from 'react'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
-import SearchForm from './search-form'
+import { SearchResults } from './search-form'
 
 const darkTheme = createTheme({
   palette: {
@@ -13,7 +13,11 @@ function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      <SearchForm />
+      <SearchResults
+        word="block"
+        limit={20}
+        exact={false}
+      />
     </ThemeProvider>
   )
 }

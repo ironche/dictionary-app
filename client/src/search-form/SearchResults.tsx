@@ -14,8 +14,14 @@ import {
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow'
 import { useWordInfo } from './models'
 
-export default function SearchForm() {
-  const { loading, data } = useWordInfo('null', 10, false)
+interface SearchResultsProps {
+  word: string
+  limit: number
+  exact: boolean
+}
+
+export function SearchResults(props: SearchResultsProps) {
+  const { loading, data } = useWordInfo(props.word, props.limit, props.exact)
 
   return (
     <TableContainer component={Paper}>

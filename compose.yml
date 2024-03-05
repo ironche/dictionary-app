@@ -41,6 +41,16 @@ services:
     depends_on:
       - db
 
+  web:
+    container_name: client
+    build: ./client
+    ports:
+      - 3000:3000
+    networks:
+      - dictionary
+    depends_on:
+      - api
+
 networks:
   dictionary:
     driver: bridge

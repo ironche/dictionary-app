@@ -1,3 +1,3 @@
 export const AppConfig = {
-  PORT: 3300,
+  PORT: 3001,
 }

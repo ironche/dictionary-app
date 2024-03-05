@@ -1,4 +1,5 @@
-import { useEffect, useState, useDeferredValue } from 'react'
+import { useEffect, useState } from 'react'
+import { useDebounce } from '../shared/hooks/debounce'
 
 interface WordInfoResponse {
   id: number
@@ -25,9 +26,9 @@ interface WordInfoHook {
 export function useWordInfo(word: string, limit: number, exactMatch = false): WordInfoHook {
   const [loading, setLoading] = useState(false)
   const [wordInfo, setWordInfo] = useState<WordInfo[]>([])
-  const w = useDeferredValue(encodeURIComponent(word))
-  const l = useDeferredValue(encodeURIComponent(limit.toString()))
-  const e = useDeferredValue(exactMatch ? '1' : '0')
+  const w = useDebounce(encodeURIComponent(word))
+  const l = useDebounce(encodeURIComponent(limit.toString()))
+  const e = useDebounce(exactMatch ? '1' : '0')
 
   useEffect(() => {
     if (w && +l > 0) {

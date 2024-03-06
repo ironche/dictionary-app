@@ -3,18 +3,25 @@
     "node": true,
     "es2022": true,
   },
-  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:react/recommended", "prettier"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2015,
     "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+    },
   },
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "react"],
   "rules": {
     "@typescript-eslint/no-namespace": "off",
     "no-inner-declarations": "off",
+    "react/react-in-jsx-scope": "off",
   },
   "settings": {
+    "react": {
+      "version": "18",
+    },
     "import/resolver": {
       "node": {
         "extensions": [".js", ".ts"],
